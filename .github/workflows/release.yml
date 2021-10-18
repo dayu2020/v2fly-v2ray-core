@@ -12,28 +12,31 @@ on:
       - "**/*.go"
       - "go.mod"
       - "go.sum"
-      - ".github/workflows/*.yml"
+      - ".github/workflows/release.yml"
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
       - "**/*.go"
       - "go.mod"
       - "go.sum"
-      - ".github/workflows/*.yml"
+      - ".github/workflows/release.yml"
 
 jobs:
   build:
     strategy:
       matrix:        
         include:
-          # BEGIN Linux ARM 5 7
+          # BEGIN Linux ARM 5 6 7
           - goos: linux
             goarch: arm
             goarm: 7          
           - goos: linux
             goarch: arm
+            goarm: 6
+          - goos: linux
+            goarch: arm
             goarm: 5
-          # END Linux ARM 5 7          
+          # END Linux ARM 5 6 7          
       fail-fast: false
 
     runs-on: ubuntu-latest
