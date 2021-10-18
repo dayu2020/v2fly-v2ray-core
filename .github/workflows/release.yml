@@ -2,7 +2,7 @@ name: Release
 
 on:
   release:
-    types: [release]
+    types: [released]
   push:
     branches:
       - asus
@@ -20,14 +20,6 @@ on:
       - "go.mod"
       - "go.sum"
       - ".github/workflows/*.yml"
-  workflow_dispatch:
-    inputs:
-      FORCE_PUSH:
-        description: 'Force to push'
-        required: true
-        default: 'false'
-    schedule:
-      - cron: '10 14 18 10 *'
 
 jobs:
   build:
@@ -77,8 +69,9 @@ jobs:
         run: |
           mkdir -p build_assets
           go build -v -o build_assets/v2ray -trimpath -ldflags "-s -w -buildid=" ./main
+          upx --lzma --ultra-brute build_assets/v2ray
           go build -v -o build_assets/v2ctl -trimpath -ldflags "-s -w -buildid=" -tags confonly ./infra/control/main
-
+          upx --lzma --ultra-brute build_assets/v2ctl
       
       - name: Prepare package
         run: cp -v ./release/config/*.* ./build_assets
