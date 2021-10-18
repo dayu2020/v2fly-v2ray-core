@@ -12,14 +12,14 @@ on:
       - "**/*.go"
       - "go.mod"
       - "go.sum"
-      - ".github/workflows/release.yml"
+      - ".github/workflows/*.yml"
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
       - "**/*.go"
       - "go.mod"
       - "go.sum"
-      - ".github/workflows/release.yml"
+      - ".github/workflows/*.yml"
 
 jobs:
   build:
