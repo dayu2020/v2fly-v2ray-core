@@ -73,9 +73,9 @@ import (
 
 	// JSON config support. Choose only one from the two below.
 	// The following line loads JSON from v2ctl
-	// _ "github.com/v2fly/v2ray-core/v4/main/json"
+	_ "github.com/v2fly/v2ray-core/v4/main/json"
 	// The following line loads JSON internally
-	_ "github.com/v2fly/v2ray-core/v4/main/jsonem"
+	//_ "github.com/v2fly/v2ray-core/v4/main/jsonem"
 
 	// Load config from file or http(s)
 	_ "github.com/v2fly/v2ray-core/v4/main/confloader/external"
