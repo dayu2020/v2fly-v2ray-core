@@ -1,23 +1,8 @@
 name: Test
 
-on:
-  push:
-    branches:
-      - master
-      - v*
-      - dev-*
-    paths:
-      - "**/*.go"
-      - "go.mod"
-      - "go.sum"
-      - ".github/workflows/test.yml"
-  pull_request:
-    types: [opened, synchronize, reopened]
-    paths:
-      - "**/*.go"
-      - "go.mod"
-      - "go.sum"
-      - ".github/workflows/test.yml"
+on: 
+ workflow_dispatch:
+  
 
 jobs:
   test:
